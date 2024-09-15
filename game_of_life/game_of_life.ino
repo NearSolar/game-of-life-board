@@ -150,8 +150,6 @@ void testKeys() {
     unsigned int row, column;
 
     if (getKey(row, column)) {
-      isPressed = false;
-
       row += VIRTUAL_MARGIN;
       column += VIRTUAL_MARGIN;
 
@@ -184,6 +182,8 @@ void testKeys() {
 
         lastSelectingPlayerMillis = millis();
       }
+
+      isPressed = false;
     }
   }
 
@@ -352,5 +352,7 @@ void loop() {
 }
 
 void pressed() {
-  isPressed = true;
+  if (!isPressed) {
+    isPressed = true;
+  }
 }
